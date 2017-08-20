@@ -1,0 +1,27 @@
+<form [formGroup]="loginForm" (ngSubmit)="login($event)">
+<md-card>
+  <md-card-header>
+    <md-card-title><h3>Login</h3></md-card-title>
+  </md-card-header>
+  <md-card-content>
+    <md-input-container class="input-field">
+      <input mdInput type="text" [(ngModel)]="email" placeholder="Email" formControlName="email"> 
+      <div class="error red" *ngIf="(loginForm.controls['email'].dirty || isSubmitted) && loginForm.controls['email'].invalid">
+            <span *ngIf="loginForm.controls['email'].errors['required']">Enter Your Email</span>
+            <span *ngIf="loginForm.controls['email'].errors['pattern']">Invalid Email</span>
+          </div>
+    </md-input-container><br>
+ 
+    <md-input-container class="input-field">
+      <input mdInput type="password" [(ngModel)]="password" placeholder="Password" formControlName="password">
+      <div class="error red" *ngIf="(loginForm.controls['password'].dirty || isSubmitted) && loginForm.controls['password'].invalid">Enter Your Password</div>
+    </md-input-container>
+  </md-card-content>
+
+<md-card-actions class="action">
+  <button md-raised-button color="primary" type="submit" (click)="login()">Login</button>
+  <button md-raised-button color="primary" [routerLink]="['/register']" routerLinkActive="active">Create an Account</button>
+</md-card-actions>
+
+</md-card>
+</form>

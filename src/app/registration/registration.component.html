@@ -1,0 +1,27 @@
+<form [formGroup]="registerForm" (ngSubmit)="login($event)">
+<md-card>
+  <md-card-header>
+    <md-card-title><h3>Register</h3></md-card-title>
+  </md-card-header>
+  <md-card-content>
+    <md-input-container class="input-field">
+      <input mdInput type="text" [(ngModel)]="email" placeholder="Email" formControlName="email">
+      <div class="error red" *ngIf="(registerForm.controls['email'].dirty || isSubmitted) && registerForm.controls['email'].invalid">
+            <span *ngIf="registerForm.controls['email'].errors['required']">Enter Your Email</span>
+            <span *ngIf="registerForm.controls['email'].errors['pattern']">Invalid Email</span>
+          </div>
+    </md-input-container><br>
+ 
+    <md-input-container class="input-field">
+      <input mdInput type="password" [(ngModel)]="password" placeholder="Password" formControlName="password">
+      <div class="error red" *ngIf="(registerForm.controls['password'].dirty || isSubmitted) && registerForm.controls['password'].invalid">Enter Your Password</div>
+    </md-input-container>
+  </md-card-content>
+
+<md-card-actions class="action">
+  <button md-raised-button color="primary" (click)="register()">Register</button>
+</md-card-actions>
+
+</md-card>
+</form>
+
